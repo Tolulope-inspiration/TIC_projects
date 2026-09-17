@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View previous HealthTriage AI assessment history stored locally in the browser." />
+    <title>HealthTriage AI | History</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="history">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="HealthTriage AI home">
+          <span class="brand-mark">+</span>
+          <span class="brand-copy">
+            <strong>HealthTriage</strong>
+            <small>AI</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="assessment.html">Assessment</a>
+          <a href="history.html" class="active">History</a>
+        </nav>
+
+        <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode"></button>
+        <a href="assessment.html" class="button button-primary nav-cta">New Assessment</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero small-hero">
+        <div class="container narrow">
+          <p class="eyebrow">Assessment history</p>
+          <h1>Previous triage reviews</h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div id="historyContainer" class="history-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark">+</span>
+            <span class="brand-copy">
+              <strong>HealthTriage</strong>
+              <small>AI</small>
+            </span>
+          </a>
+        </div>
+        <div>
+          <p class="small-text">Assessment history is stored locally in the browser for this prototype.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

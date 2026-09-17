@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Complete the digital symptom assessment for a conservative triage recommendation." />
+    <title>HealthTriage AI | Assessment</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="assessment">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="HealthTriage AI home">
+          <span class="brand-mark">+</span>
+          <span class="brand-copy">
+            <strong>HealthTriage</strong>
+            <small>AI</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="assessment.html" class="active">Assessment</a>
+          <a href="history.html">History</a>
+        </nav>
+
+        <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode"></button>
+        <a href="history.html" class="button button-secondary nav-cta">View History</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero small-hero">
+        <div class="container narrow">
+          <p class="eyebrow">Step-by-step assessment</p>
+          <h1>Health review form</h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container form-shell">
+          <div class="assessment-progress card">
+            <div class="progress-row">
+              <span class="progress-label">Progress</span>
+              <span id="progressText">Step 1 of 5</span>
+            </div>
+            <div class="progress-bar" aria-hidden="true">
+              <span id="progressFill"></span>
+            </div>
+          </div>
+
+          <form id="assessmentForm" novalidate>
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+            <section class="step-panel active" data-step="1">
+              <div class="panel-header">
+                <p class="eyebrow">Basic details</p>
+                <h2>Tell us a little about the patient</h2>
+              </div>
+
+              <div class="field-grid two-col">
+                <div class="field">
+                  <label for="age">Age</label>
+                  <input id="age" name="age" type="number" min="0" max="120" placeholder="Enter age" required />
+                  <small class="field-error" data-error-for="age"></small>
+                </div>
+
+                <div class="field">
+                  <label for="temperature">Body temperature (°C)</label>
+                  <input id="temperature" name="temperature" type="number" min="34" max="45" step="0.1" placeholder="e.g. 38.5" required />
+                  <small class="field-error" data-error-for="temperature"></small>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="gender">Patient category</label>
+                <select id="gender" name="gender">
+                  <option value="">Select</option>
+                  <option value="adult">Adult</option>
+                  <option value="child">Child</option>
+                  <option value="pregnant">Pregnant person</option>
+                  <option value="older-adult">Older adult</option>
+                </select>
+              </div>
+            </section>
+
+            <section class="step-panel" data-step="2">
+              <div class="panel-header">
+                <p class="eyebrow">Main symptoms</p>
+                <h2>Which symptoms are currently present?</h2>
+              </div>
+
+              <div class="check-grid">
+                <label class="option-card"><input type="checkbox" name="symptoms" value="fever" /> <span>Fever</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="cough" /> <span>Cough</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="fatigue" /> <span>Fatigue / weakness</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="headache" /> <span>Headache</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="vomiting" /> <span>Vomiting</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="diarrhoea" /> <span>Diarrhoea</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="shortness-of-breath" /> <span>Shortness of breath</span></label>
+                <label class="option-card"><input type="checkbox" name="symptoms" value="chest-pain" /> <span>Chest pain</span></label>
+              </div>
+              <small class="field-error" data-error-for="symptoms"></small>
+            </section>
+
+            <section class="step-panel" data-step="3">
+              <div class="panel-header">
+                <p class="eyebrow">Symptom details</p>
+                <h2>How long and how severe are the symptoms?</h2>
+              </div>
+
+              <div class="field">
+                <label for="duration">How long have symptoms been present?</label>
+                <select id="duration" name="duration" required>
+                  <option value="">Select duration</option>
+                  <option value="less-than-24-hours">Less than 24 hours</option>
+                  <option value="1-to-3-days">1 to 3 days</option>
+                  <option value="4-to-7-days">4 to 7 days</option>
+                  <option value="more-than-7-days">More than 7 days</option>
+                  <option value="several-weeks">Several weeks</option>
+                </select>
+                <small class="field-error" data-error-for="duration"></small>
+              </div>
+
+              <div class="field">
+                <label>Overall severity</label>
+                <div class="radio-stack">
+                  <label class="option-row"><input type="radio" name="severity" value="mild" /> <span>Mild</span></label>
+                  <label class="option-row"><input type="radio" name="severity" value="moderate" /> <span>Moderate</span></label>
+                  <label class="option-row"><input type="radio" name="severity" value="severe" /> <span>Severe</span></label>
+                </div>
+                <small class="field-error" data-error-for="severity"></small>
+              </div>
+            </section>
+
+            <section class="step-panel" data-step="4">
+              <div class="panel-header">
+                <p class="eyebrow">Urgent warning signs</p>
+                <h2>Are any of these warning signs present?</h2>
+              </div>
+
+              <div class="check-grid">
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="breathing" /> <span>Difficulty breathing</span></label>
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="confusion" /> <span>Confusion</span></label>
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="fainting" /> <span>Fainting</span></label>
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="severe-dehydration" /> <span>Severe dehydration</span></label>
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="severe-pain" /> <span>Severe pain</span></label>
+                <label class="option-card"><input type="checkbox" name="warningSigns" value="bleeding" /> <span>Severe bleeding</span></label>
+              </div>
+            </section>
+
+            <section class="step-panel" data-step="5">
+              <div class="panel-header">
+                <p class="eyebrow">Review</p>
+                <h2>Check your summary before submitting</h2>
+              </div>
+
+              <div class="review-box card">
+                <div id="reviewSummary"></div>
+              </div>
+
+              <div class="field">
+                <label for="notes">Anything else important to mention?</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Optional: recent travel, allergies, pregnancy, chronic conditions, or other concerns."></textarea>
+              </div>
+            </section>
+
+            <div class="form-actions">
+              <button type="button" id="backBtn" class="button button-secondary hidden">Back</button>
+              <button type="button" id="nextBtn" class="button button-primary">Continue</button>
+              <button type="submit" id="submitBtn" class="button button-primary hidden">Submit Assessment</button>
+              <button type="button" id="restartAssessmentBtn" class="button button-secondary">Restart</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark">+</span>
+            <span class="brand-copy">
+              <strong>HealthTriage</strong>
+              <small>AI</small>
+            </span>
+          </a>
+        </div>
+        <div>
+          <p class="small-text">Educational triage prototype only. This is not a diagnosis and does not replace licensed medical care.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="HealthTriage AI helps users assess early symptoms and identify when to seek urgent healthcare attention."
+    />
+    <title>HealthTriage AI</title>
+    <link rel="stylesheet" href="Health_ai.css" />
+    <script src="Health_ai.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <!-- ========================= HEADER ========================= -->
+      <header class="topbar" aria-label="Primary site header">
+        <div class="brand" aria-label="HealthTriage AI home">
+          <div class="brand-mark" aria-hidden="true">+</div>
+          <div class="brand-text">
+            <p class="eyebrow">Digital health support</p>
+            <h1>HealthTriage AI</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="mode-toggle" id="mode-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+            <span class="mode-icon" aria-hidden="true">◐</span>
+            <span class="mode-label">Dark mode</span>
+          </button>
+          <a class="topbar-link" href="#emergency-warning">Urgent care guidance</a>
+        </div>
+      </header>
+
+      <!-- ========================= MAIN CONTENT ========================= -->
+      <main class="app-layout">
+        <!-- HERO / INTRODUCTION -->
+        <section class="intro-panel" aria-labelledby="intro-heading">
+          <div class="intro-copy">
+            <p class="section-tag">Early symptom assessment</p>
+            <h2 id="intro-heading">A faster, safer way to identify when symptoms may need urgent attention.</h2>
+            <p>
+              HealthTriage AI is designed for mobile-first screening of common symptoms seen in everyday clinical practice.
+              It helps people recognise warning signs early, understand when to seek timely care, and decide whether
+              immediate professional attention may be needed.
+            </p>
+            <ul class="trust-points" aria-label="Key product features">
+              <li>Built for Nigerian healthcare contexts and everyday mobile use</li>
+              <li>Structured symptom checks for safer patient intake</li>
+              <li>Clear escalation prompts for potentially serious conditions</li>
+            </ul>
+          </div>
+
+          <aside class="info-card" aria-label="Prototype notice">
+            <p class="card-label">Prototype notice</p>
+            <h3>For early review only</h3>
+            <p>
+              This tool is not a diagnosis and should never replace a qualified clinician, pharmacist, or emergency care assessment.
+            </p>
+          </aside>
+        </section>
+
+        <!-- ASSESSMENT FORM -->
+        <section class="triage-panel" aria-labelledby="assessment-title">
+          <div class="panel-header">
+            <p class="section-tag">Health assessment</p>
+            <h2 id="assessment-title">Check symptoms</h2>
+          </div>
+
+          <form id="triage-form" aria-describedby="form-guidance">
+            <p id="form-guidance" class="form-guidance">
+              Please provide the details most relevant to your current health situation.
+            </p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="age">Age</label>
+                <input
+                  id="age"
+                  name="age"
+                  type="number"
+                  min="0"
+                  max="120"
+                  step="1"
+                  placeholder="Enter age in years"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="temperature">Body temperature</label>
+                <div class="input-with-unit">
+                  <input
+                    id="temperature"
+                    name="temperature"
+                    type="number"
+                    min="34"
+                    max="45"
+                    step="0.1"
+                    placeholder="e.g. 38.5"
+                    required
+                  />
+                  <span aria-hidden="true">°C</span>
+                </div>
+              </div>
+            </div>
+
+            <fieldset class="symptom-fieldset">
+              <legend>Symptoms experienced</legend>
+              <div class="symptom-grid" role="group" aria-labelledby="symptom-legend">
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="fever" />
+                  <span>Fever</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="cough" />
+                  <span>Cough</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="fatigue" />
+                  <span>Weakness / fatigue</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="headache" />
+                  <span>Headache</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="vomiting" />
+                  <span>Vomiting</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="diarrhoea" />
+                  <span>Diarrhoea</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="breathing" />
+                  <span>Shortness of breath</span>
+                </label>
+                <label class="symptom-option">
+                  <input type="checkbox" name="symptoms" value="chest-pain" />
+                  <span>Chest pain</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="duration">How long have symptoms been present?</label>
+              <select id="duration" name="duration" required>
+                <option value="">Select duration</option>
+                <option value="less-than-24h">Less than 24 hours</option>
+                <option value="1-3-days">1 to 3 days</option>
+                <option value="4-7-days">4 to 7 days</option>
+                <option value="more-than-7-days">More than 7 days</option>
+                <option value="several-weeks">Several weeks</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="other-symptoms">Other symptoms or concerns</label>
+              <textarea
+                id="other-symptoms"
+                name="other-symptoms"
+                rows="4"
+                placeholder="Describe any other symptoms, recent travel, pregnancy, allergies, or existing medical conditions that may matter."
+              ></textarea>
+            </div>
+
+            <div class="action-row">
+              <button type="submit" class="primary-button">Assess Symptoms</button>
+              <button type="reset" class="secondary-button">Clear</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- EMERGENCY WARNING -->
+        <section class="warning-panel" id="emergency-warning" aria-labelledby="warning-title">
+          <div class="panel-header">
+            <p class="section-tag">Emergency warning</p>
+            <h2 id="warning-title">Seek urgent attention if you or the patient has any of the following</h2>
+          </div>
+
+          <ul class="warning-list" aria-label="Emergency warning symptoms">
+            <li>Difficulty breathing, severe chest pain, or bluish lips</li>
+            <li>Confusion, severe weakness, fainting, or sudden loss of consciousness</li>
+            <li>Persistent vomiting, severe dehydration, or inability to keep fluids down</li>
+            <li>High fever in children or a rapid worsening of symptoms</li>
+            <li>Severe bleeding, severe allergic reaction, or signs of stroke</li>
+          </ul>
+        </section>
+
+        <!-- RESULTS AREA -->
+        <section class="results-panel" aria-live="polite" aria-labelledby="results-title">
+          <div class="panel-header">
+            <p class="section-tag">Assessment result</p>
+            <h2 id="results-title">Your results will appear here</h2>
+          </div>
+
+          <div class="result-empty" aria-live="polite">
+            <p class="empty-title">No assessment yet</p>
+            <p>
+              Complete the form to receive a preliminary triage summary and guidance for follow-up care.
+            </p>
+            <p class="muted">This area is reserved for AI-generated risk prompting and clinical safety messaging.</p>
+          </div>
+        </section>
+
+        <!-- DISCLAIMER -->
+        <footer class="disclaimer" aria-labelledby="disclaimer-title">
+          <h2 id="disclaimer-title">Important medical disclaimer</h2>
+          <p>
+            HealthTriage AI is a prototype for early symptom review and education only. It does not diagnose diseases,
+            prescribe treatment, or replace a qualified healthcare professional. If symptoms are severe, worsening, or
+            placing the patient at risk, seek urgent medical attention from a licensed healthcare provider or emergency service.
+          </p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
